@@ -1,40 +1,40 @@
-#配送及发票导出PDF
+# 配送 and invoice export PDF
 
-用于Opencart，可以在后台为订单配送列表和发票导出为PDF文件。
+For OpenCART, you can export it to a PDF file for the order delivery list and invoice in the background.
 
-使用了html2pdf类，[Github地址](https://github.com/spipu/html2pdf/)。
+HTML2PDF class, [github address] (https://github.com/spipu/html2pdf/).
 
-#安装
+#installation
 
-确保Opencart已经安装vamod。
+Make sure OpenCART has already installed VAMOD.
 
-安装xml文件，然后刷新并为管理员组添加权限。可以在Sales/Orders下找到。
+Install the XML file, then refresh and add permissions to the administrator group. Can be found under Sales / Orders.
 
-#vqmod安装
+#vqmod installation
 
-下载[vqmod for opencart](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=19501)，[vqmod](https://github.com/vqmod/vqmod)
+Download [VQMOD for OpenCart] (http://www.opencart.com/index.php?route=extension/extension/info&ofo ts ion_id=19501), [VQMOD] (https://github.com/vqmod/vqmod)
 
-把vqmod文件放到system同级的目录下，执行example.com/vqmod/install，注意权限；
+Put the VQMOD file in the SYSTEM in the same directory, execute the example.com/vqmod/install, pay attention to permissions;
 
-把vqmod for opencart2 的文件解压替换。
+Replace the file of VQMOD for OpenCart2.
 
-#注意
+#note
 
-导出中文会乱码，需要另外选择字体并添加到html2pdf/_tcpdf_5.0.002/fonts/。
+Exporting Chinese will garble, need additional fonts and add to HTML2PDF / _TCPDF_5.0.002 / fonts.
 
-创建自定义字体看[这里](https://github.com/spipu/html2pdf/tree/master/_tcpdf_5.0.002/fonts/utils)。
+Create a custom font to see [here] (https://github.com/spipu/html2pdf/tree/master/_tcpdf_5.0.002/FONTS/UTILS).
 
-具体：找一个支持中文的字体，例如微软雅黑（msyh.ttf），复制到html2pdf/*/fonts/utils/下，在utils文件夹下应该有ttf2ufm.exe文件，shift+鼠标右键打开dos，运行以下命令。
-```
-ttf2ufm -a -F msyh.ttf
-php -q makefont.php msyh.ttf msyh.ufm
-```
-这时文件夹下会生成三个文件：msyh.ctg.z  msyh.php  msyh.z，将这个三个文件复制到上一级目录fonts下，然后就可以在php中调用字体，例如：
-```
-include(html2pdf.class.php'); 
-$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'utf-8', array(0, 0, 0, 0));
-$html2pdf->pdf->SetDisplayMode('fullpage');
-$html2pdf->setDefaultFont('msyh');
-$html2pdf->writeHTML($content, false); 
-$html2pdf->Output('test.pdf','D');
-```
+Specific: Find a letter to Chinese, such as Microsoft Ya-black (MSYH.TTF), copy to HTML2PDF / * / FONTS / UTILS / Under the Utils folder, there should be a TTF2ufm.exe file, Shift + mouse button to open DOS, run The following command.
+`` `
+TTF2UFM -A -F MSYH.TTF
+PHP -Q Makefont.php msyh.ttf msyh.ufm
+`` `
+At this time, three files are generated under the folder: msyh.ctg.z msyh.php msyh.z, copy this three files to the previous directory fonts, then call fonts in PHP, for example:
+`` `
+Include (HTML2PDF.CLASS.PHP ');
+$ HTML2PDF = New HTML2PDF ('P', 'A4', 'En', True, 'UTF-8', Array (0, 0, 0, 0));
+$ html2pdf-> pdf-> setDisplaymode ('fullpage ");
+$ html2pdf-> setdefaultfont ('msyh');
+$ HTML2PDF-> Writehtml ($ Content, False);
+$ html2pdf-> Output ('Test.pdf', 'D');
+`` `
