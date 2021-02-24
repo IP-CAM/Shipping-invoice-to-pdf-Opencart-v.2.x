@@ -1,4 +1,4 @@
-# 配送 and invoice export PDF
+#Delievery and invoice export PDF
 
 For OpenCART, you can export it to a PDF file for the order delivery list and invoice in the background.
 
@@ -6,7 +6,7 @@ HTML2PDF class, [github address] (https://github.com/spipu/html2pdf/).
 
 #installation
 
-Make sure OpenCART has already installed VAMOD.
+Make sure OpenCART has already installed VQMOD.
 
 Install the XML file, then refresh and add permissions to the administrator group. Can be found under Sales / Orders.
 
